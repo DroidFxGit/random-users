@@ -41,4 +41,8 @@ final class MainSearchViewModel {
             }
         }
     }
+    
+    func randomUser(at index: IndexPath) -> RandomUser? {
+        return randomUsers?[index.row]
+    }
 }

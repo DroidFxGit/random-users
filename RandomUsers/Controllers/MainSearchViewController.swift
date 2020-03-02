@@ -12,14 +12,14 @@ final class MainSearchViewController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private let viewModel = MainSearchViewModel()
     
+    var adaptor: MainSearchAdaptor!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Random Users"
-        setupSearchController()
-        
         UIAlertControllerView.showLoading(from: self, message: "Loading info...")
+        setupSearchController()
         fetchUsers()
     }
     
@@ -27,20 +27,39 @@ final class MainSearchViewController: UIViewController {
         viewModel.onUpdatedData = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.tableView.reloadData()
-                UIAlertControllerView.hideLoading(from: strongSelf)
+                strongSelf.handleAdaptor()
             }
         }
         
         viewModel.onThrowError = { error in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                UIAlertControllerView.hideLoading(from: strongSelf)
-                UIAlertControllerView.showAlert(from: strongSelf, title: "Error", message: error.localizedDescription)
+                strongSelf.handleError(error)
             }
         }
         
         viewModel.fetchRandomUsers()
+    }
+    
+    fileprivate func handleAdaptor() {
+        UIAlertControllerView.hideLoading(from: self)
+        let userInfo = viewModel.randomUsers?.compactMap { UserInfo($0) }.filter { $0 == $0 }
+        adaptor = MainSearchAdaptor(tableView: tableView, data: userInfo!) { [weak self] user in
+            self?.showUserDetails(with: user)
+        }
+        tableView.reloadData()
+    }
+    
+    fileprivate func showUserDetails(with user: UserInfo) {
+        //TODO:
+//        guard let user = viewModel.randomUser(at: index) else { return }
+    }
+    
+    fileprivate func handleError(_ error: Error) {
+        UIAlertControllerView.hideLoading(from: self) {
+            UIAlertControllerView.showAlert(from: self, title: "Error",
+                                            message: error.localizedDescription)
+        }
     }
     
     fileprivate func setupSearchController() {
