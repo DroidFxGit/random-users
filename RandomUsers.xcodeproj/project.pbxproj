@@ -16,6 +16,12 @@
 		52BBFA75240750B9002DC0B1 /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBFA73240750B9002DC0B1 /* MainSearchViewController.swift */; };
 		52BBFA76240750B9002DC0B1 /* MainSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BBFA74240750B9002DC0B1 /* MainSearchViewController.xib */; };
 		52BBFA79240759ED002DC0B1 /* MainSearchAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBFA78240759ED002DC0B1 /* MainSearchAdaptor.swift */; };
+		52CAC7FE240C168200C0F067 /* RandomUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC7FD240C168200C0F067 /* RandomUserResponse.swift */; };
+		52CAC800240C73E700C0F067 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC7FF240C73E700C0F067 /* BaseService.swift */; };
+		52CAC805240C798500C0F067 /* RandomUserServiceConcrete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC804240C798500C0F067 /* RandomUserServiceConcrete.swift */; };
+		52CAC807240C7A9F00C0F067 /* RandomUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC806240C7A9F00C0F067 /* RandomUserService.swift */; };
+		52CAC80A240C842900C0F067 /* MainSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC809240C842900C0F067 /* MainSearchViewModel.swift */; };
+		52CAC80D240C8CBD00C0F067 /* UIAlertControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC80C240C8CBD00C0F067 /* UIAlertControllerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		52BBFA73240750B9002DC0B1 /* MainSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
 		52BBFA74240750B9002DC0B1 /* MainSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchViewController.xib; sourceTree = "<group>"; };
 		52BBFA78240759ED002DC0B1 /* MainSearchAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchAdaptor.swift; sourceTree = "<group>"; };
+		52CAC7FD240C168200C0F067 /* RandomUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserResponse.swift; sourceTree = "<group>"; };
+		52CAC7FF240C73E700C0F067 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		52CAC804240C798500C0F067 /* RandomUserServiceConcrete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserServiceConcrete.swift; sourceTree = "<group>"; };
+		52CAC806240C7A9F00C0F067 /* RandomUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserService.swift; sourceTree = "<group>"; };
+		52CAC809240C842900C0F067 /* MainSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewModel.swift; sourceTree = "<group>"; };
+		52CAC80C240C8CBD00C0F067 /* UIAlertControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +117,13 @@
 				52BBFA4224074FD7002DC0B1 /* AppDelegate.swift */,
 				52BBFA4424074FD7002DC0B1 /* SceneDelegate.swift */,
 				52BBFA4B24074FD9002DC0B1 /* Assets.xcassets */,
+				52BBFA4D24074FD9002DC0B1 /* LaunchScreen.storyboard */,
+				52CAC80B240C8C9E00C0F067 /* Utils */,
 				52BBFA772407589D002DC0B1 /* Adaptors */,
 				52BBFA7224075069002DC0B1 /* Controllers */,
-				52BBFA4D24074FD9002DC0B1 /* LaunchScreen.storyboard */,
+				52CAC7FC240C165A00C0F067 /* Models */,
 				52BBFA7A24075F9E002DC0B1 /* Networking */,
+				52CAC808240C83CE00C0F067 /* ViewModel */,
 			);
 			path = RandomUsers;
 			sourceTree = "<group>";
@@ -151,8 +166,43 @@
 		52BBFA7A24075F9E002DC0B1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				52CAC801240C73FD00C0F067 /* protocols */,
+				52CAC7FF240C73E700C0F067 /* BaseService.swift */,
+				52CAC804240C798500C0F067 /* RandomUserServiceConcrete.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		52CAC7FC240C165A00C0F067 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC7FD240C168200C0F067 /* RandomUserResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52CAC801240C73FD00C0F067 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC806240C7A9F00C0F067 /* RandomUserService.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		52CAC808240C83CE00C0F067 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC809240C842900C0F067 /* MainSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		52CAC80B240C8C9E00C0F067 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC80C240C8CBD00C0F067 /* UIAlertControllerView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +336,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CAC805240C798500C0F067 /* RandomUserServiceConcrete.swift in Sources */,
+				52CAC80D240C8CBD00C0F067 /* UIAlertControllerView.swift in Sources */,
 				52BBFA79240759ED002DC0B1 /* MainSearchAdaptor.swift in Sources */,
 				52BBFA4324074FD7002DC0B1 /* AppDelegate.swift in Sources */,
+				52CAC807240C7A9F00C0F067 /* RandomUserService.swift in Sources */,
+				52CAC800240C73E700C0F067 /* BaseService.swift in Sources */,
 				52BBFA4524074FD7002DC0B1 /* SceneDelegate.swift in Sources */,
+				52CAC7FE240C168200C0F067 /* RandomUserResponse.swift in Sources */,
+				52CAC80A240C842900C0F067 /* MainSearchViewModel.swift in Sources */,
 				52BBFA75240750B9002DC0B1 /* MainSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
