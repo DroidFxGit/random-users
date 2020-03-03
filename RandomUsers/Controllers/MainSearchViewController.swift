@@ -23,11 +23,11 @@ final class MainSearchViewController: UIViewController {
         fetchUsers()
     }
     
-    fileprivate func fetchUsers() {
+    func fetchUsers() {
         viewModel.onUpdatedData = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.handleAdaptor()
+                strongSelf.handleAdaptor(with: strongSelf.viewModel.randomUsers!)
             }
         }
         
@@ -41,10 +41,10 @@ final class MainSearchViewController: UIViewController {
         viewModel.fetchRandomUsers()
     }
     
-    fileprivate func handleAdaptor() {
+    fileprivate func handleAdaptor(with users: [RandomUser]) {
         UIAlertControllerView.hideLoading(from: self)
-        let userInfo = viewModel.randomUsers?.compactMap { UserInfo($0) }.filter { $0 == $0 }
-        adaptor = MainSearchAdaptor(tableView: tableView, data: userInfo!) { [weak self] user in
+        let userInfo = users.compactMap { UserInfo($0) }.filter { $0 == $0 }
+        adaptor = MainSearchAdaptor(tableView: tableView, data: userInfo) { [weak self] user in
             self?.showUserDetails(with: user)
         }
         tableView.reloadData()
@@ -66,12 +66,19 @@ final class MainSearchViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
     }
 }
 
 extension MainSearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //TODO:
+        guard let users = viewModel.randomUsers else { return }
+        let filteredUsers = searchText.isEmpty ? users : users.filter({ user -> Bool in
+            return user.email.range(of: searchText, options: .caseInsensitive) != nil ||
+                   user.name.first.range(of: searchText, options: .caseInsensitive) != nil ||
+                   user.name.last.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        handleAdaptor(with: filteredUsers)
     }
 }
