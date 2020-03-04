@@ -51,8 +51,9 @@ final class MainSearchViewController: UIViewController {
     }
     
     fileprivate func showUserDetails(with user: UserInfo) {
-        //TODO:
-//        guard let user = viewModel.randomUser(at: index) else { return }
+        let detailView = UserDetailViewController()
+        detailView.user = user
+        navigationController?.pushViewController(detailView, animated: true)
     }
     
     fileprivate func handleError(_ error: Error) {
@@ -68,6 +69,7 @@ final class MainSearchViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 

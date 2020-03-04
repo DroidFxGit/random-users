@@ -26,6 +26,10 @@
 		52CAC814240CA10800C0F067 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CAC812240CA10800C0F067 /* UserTableViewCell.xib */; };
 		52CAC816240CA90D00C0F067 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC815240CA90D00C0F067 /* UIImageView+Extensions.swift */; };
 		52CAC818240CD57200C0F067 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC817240CD57200C0F067 /* UserInfo.swift */; };
+		52CAC81D240E1EE300C0F067 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC81B240E1EE300C0F067 /* MainHeaderView.swift */; };
+		52CAC81E240E1EE300C0F067 /* MainHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CAC81C240E1EE300C0F067 /* MainHeaderView.xib */; };
+		52CAC823240F503100C0F067 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC821240F503100C0F067 /* UserDetailViewController.swift */; };
+		52CAC824240F503100C0F067 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CAC822240F503100C0F067 /* UserDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		52CAC812240CA10800C0F067 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		52CAC815240CA90D00C0F067 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		52CAC817240CD57200C0F067 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		52CAC81B240E1EE300C0F067 /* MainHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
+		52CAC81C240E1EE300C0F067 /* MainHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainHeaderView.xib; sourceTree = "<group>"; };
+		52CAC821240F503100C0F067 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		52CAC822240F503100C0F067 /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +166,8 @@
 		52BBFA7224075069002DC0B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				52BBFA73240750B9002DC0B1 /* MainSearchViewController.swift */,
-				52BBFA74240750B9002DC0B1 /* MainSearchViewController.xib */,
+				52CAC820240F4F7A00C0F067 /* Detail */,
+				52CAC81F240F4EDB00C0F067 /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,8 +245,28 @@
 		52CAC810240CA0DA00C0F067 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				52CAC81B240E1EE300C0F067 /* MainHeaderView.swift */,
+				52CAC81C240E1EE300C0F067 /* MainHeaderView.xib */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		52CAC81F240F4EDB00C0F067 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52BBFA73240750B9002DC0B1 /* MainSearchViewController.swift */,
+				52BBFA74240750B9002DC0B1 /* MainSearchViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52CAC820240F4F7A00C0F067 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC821240F503100C0F067 /* UserDetailViewController.swift */,
+				52CAC822240F503100C0F067 /* UserDetailViewController.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,8 +375,10 @@
 			files = (
 				52CAC814240CA10800C0F067 /* UserTableViewCell.xib in Resources */,
 				52BBFA4F24074FD9002DC0B1 /* LaunchScreen.storyboard in Resources */,
+				52CAC824240F503100C0F067 /* UserDetailViewController.xib in Resources */,
 				52BBFA76240750B9002DC0B1 /* MainSearchViewController.xib in Resources */,
 				52BBFA4C24074FD9002DC0B1 /* Assets.xcassets in Resources */,
+				52CAC81E240E1EE300C0F067 /* MainHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +405,7 @@
 			files = (
 				52CAC805240C798500C0F067 /* RandomUserServiceConcrete.swift in Sources */,
 				52CAC80D240C8CBD00C0F067 /* UIAlertControllerView.swift in Sources */,
+				52CAC81D240E1EE300C0F067 /* MainHeaderView.swift in Sources */,
 				52CAC813240CA10800C0F067 /* UserTableViewCell.swift in Sources */,
 				52BBFA79240759ED002DC0B1 /* MainSearchAdaptor.swift in Sources */,
 				52BBFA4324074FD7002DC0B1 /* AppDelegate.swift in Sources */,
@@ -383,6 +414,7 @@
 				52CAC800240C73E700C0F067 /* BaseService.swift in Sources */,
 				52CAC818240CD57200C0F067 /* UserInfo.swift in Sources */,
 				52BBFA4524074FD7002DC0B1 /* SceneDelegate.swift in Sources */,
+				52CAC823240F503100C0F067 /* UserDetailViewController.swift in Sources */,
 				52CAC7FE240C168200C0F067 /* RandomUserResponse.swift in Sources */,
 				52CAC80A240C842900C0F067 /* MainSearchViewModel.swift in Sources */,
 				52BBFA75240750B9002DC0B1 /* MainSearchViewController.swift in Sources */,

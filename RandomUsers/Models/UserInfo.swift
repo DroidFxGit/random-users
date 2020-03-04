@@ -19,7 +19,7 @@ struct UserInfo: Equatable, Hashable {
     let registeredDate: String
     
     init(_ user: RandomUser) {
-        self.gender = user.gender
+        self.gender = "Gender: \(user.gender)"
         self.fullName = "\(user.name.first) \(user.name.last)"
         self.email = "email: \(user.email)"
         self.phone = "phone: \(user.phone)"

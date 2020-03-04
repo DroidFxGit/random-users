@@ -86,7 +86,8 @@ class BaseService<T: Codable> {
      - Parameter data: data obtained from service
      */
     func parse(data: Data) throws -> T {
-        return try JSONDecoder().decode(T.self, from: data)
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
     }
     
     // MARK: - Private methods
