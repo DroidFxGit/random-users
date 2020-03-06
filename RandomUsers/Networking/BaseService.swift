@@ -87,6 +87,7 @@ class BaseService<T: Codable> {
      */
     func parse(data: Data) throws -> T {
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.commonDateFormatter)
         return try decoder.decode(T.self, from: data)
     }
     

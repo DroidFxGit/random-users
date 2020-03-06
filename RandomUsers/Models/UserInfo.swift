@@ -24,12 +24,13 @@ struct UserInfo: Equatable, Hashable {
         self.email = "email: \(user.email)"
         self.phone = "phone: \(user.phone)"
         self.imageUrl = user.picture.thumbnail
-        self.profileImageUrl = user.picture.medium
+        self.profileImageUrl = user.picture.large
         self.fullAddress = """
                            \(user.location.country).
                            \(user.location.street.name) #\(user.location.street.number).
                            \(user.location.city), \(user.location.state)
                            """
-        self.registeredDate = "Registered Date: \(user.registered.date)"
+        let date = user.registered.date
+        self.registeredDate = "Registered Date: \(date.stringDate)"
     }
 }

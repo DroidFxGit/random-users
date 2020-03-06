@@ -25,7 +25,7 @@ struct RandomUser: Codable {
 }
 
 struct Registration: Codable {
-    let date: String
+    let date: Date
     let age: Int
 }
 
