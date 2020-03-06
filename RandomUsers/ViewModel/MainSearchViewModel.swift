@@ -14,7 +14,7 @@ final class MainSearchViewModel {
     var isFetching = false
     var onUpdatedData: (() -> Void)?
     var onThrowError: ((Error) -> Void)?
-    var randomUsers: [RandomUser]? {
+    var randomUsers: [RandomUser] = [] {
         didSet {
             onUpdatedData?()
         }
@@ -35,7 +35,7 @@ final class MainSearchViewModel {
             
             switch response {
             case .success(let response):
-                self?.randomUsers = response.results
+                self?.randomUsers += response.results
             case .failure(let error):
                 self?.onThrowError?(error)
             }
@@ -43,6 +43,6 @@ final class MainSearchViewModel {
     }
     
     func randomUser(at index: IndexPath) -> RandomUser? {
-        return randomUsers?[index.row]
+        return randomUsers[index.row]
     }
 }
