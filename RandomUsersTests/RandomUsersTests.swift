@@ -20,8 +20,8 @@ class RandomUsersTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let response = RandomUserResponse.validResponse(bundle: Bundle(for: type(of: self)))
+        print(response)
     }
 
     func testPerformanceExample() {

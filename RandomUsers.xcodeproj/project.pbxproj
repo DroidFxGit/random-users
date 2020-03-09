@@ -37,6 +37,11 @@
 		52CAC82C2410AF0900C0F067 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC82B2410AF0900C0F067 /* Date+Extensions.swift */; };
 		52CAC82F2414CE6900C0F067 /* UserInfoPersisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC82E2414CE6900C0F067 /* UserInfoPersisted.swift */; };
 		52CAC83524154ECA00C0F067 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC83424154ECA00C0F067 /* RealmManager.swift */; };
+		52CAC83D24160F1B00C0F067 /* MockResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC83C24160F1B00C0F067 /* MockResource.swift */; };
+		52CAC83F24160F5E00C0F067 /* MockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC83E24160F5E00C0F067 /* MockManager.swift */; };
+		52CAC842241619E400C0F067 /* random_users.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52CAC841241619E400C0F067 /* random_users.bundle */; };
+		52CAC84524161D4000C0F067 /* RandomUserResponse+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC84424161D4000C0F067 /* RandomUserResponse+Extensions.swift */; };
+		52CAC8482416224600C0F067 /* RandomUserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC8472416224600C0F067 /* RandomUserServiceMock.swift */; };
 		54251A4C1FBEC109907ECE63 /* Pods_RandomUsers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD29CC97F8D1C64FCCDCF48 /* Pods_RandomUsers.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +103,11 @@
 		52CAC82B2410AF0900C0F067 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		52CAC82E2414CE6900C0F067 /* UserInfoPersisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPersisted.swift; sourceTree = "<group>"; };
 		52CAC83424154ECA00C0F067 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		52CAC83C24160F1B00C0F067 /* MockResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResource.swift; sourceTree = "<group>"; };
+		52CAC83E24160F5E00C0F067 /* MockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockManager.swift; sourceTree = "<group>"; };
+		52CAC841241619E400C0F067 /* random_users.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = random_users.bundle; sourceTree = "<group>"; };
+		52CAC84424161D4000C0F067 /* RandomUserResponse+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RandomUserResponse+Extensions.swift"; sourceTree = "<group>"; };
+		52CAC8472416224600C0F067 /* RandomUserServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserServiceMock.swift; sourceTree = "<group>"; };
 		61F404B9B38B68FA86F7A0FE /* Pods-RandomUsers-RandomUsersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUsers-RandomUsersUITests.debug.xcconfig"; path = "Target Support Files/Pods-RandomUsers-RandomUsersUITests/Pods-RandomUsers-RandomUsersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDD29CC97F8D1C64FCCDCF48 /* Pods_RandomUsers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomUsers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F3A95B5A94FCD32141FB0 /* Pods-RandomUsers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUsers.debug.xcconfig"; path = "Target Support Files/Pods-RandomUsers/Pods-RandomUsers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +185,9 @@
 		52BBFA5824074FD9002DC0B1 /* RandomUsersTests */ = {
 			isa = PBXGroup;
 			children = (
+				52CAC846241621F900C0F067 /* networking */,
+				52CAC84324161B3A00C0F067 /* extensions */,
+				52CAC8362416066D00C0F067 /* resources */,
 				52BBFA5924074FD9002DC0B1 /* RandomUsersTests.swift */,
 				52BBFA5B24074FD9002DC0B1 /* Info.plist */,
 			);
@@ -333,6 +346,40 @@
 			path = Persistance;
 			sourceTree = "<group>";
 		};
+		52CAC8362416066D00C0F067 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC841241619E400C0F067 /* random_users.bundle */,
+				52CAC83924160CF200C0F067 /* mocks */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		52CAC83924160CF200C0F067 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC83C24160F1B00C0F067 /* MockResource.swift */,
+				52CAC83E24160F5E00C0F067 /* MockManager.swift */,
+			);
+			path = mocks;
+			sourceTree = "<group>";
+		};
+		52CAC84324161B3A00C0F067 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC84424161D4000C0F067 /* RandomUserResponse+Extensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		52CAC846241621F900C0F067 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC8472416224600C0F067 /* RandomUserServiceMock.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
 		E211958480B8BED847AAE511 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CAC842241619E400C0F067 /* random_users.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +673,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CAC84524161D4000C0F067 /* RandomUserResponse+Extensions.swift in Sources */,
+				52CAC83F24160F5E00C0F067 /* MockManager.swift in Sources */,
 				52BBFA5A24074FD9002DC0B1 /* RandomUsersTests.swift in Sources */,
+				52CAC83D24160F1B00C0F067 /* MockResource.swift in Sources */,
+				52CAC8482416224600C0F067 /* RandomUserServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
