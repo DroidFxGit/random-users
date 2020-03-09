@@ -10,18 +10,21 @@ import Foundation
 
 final class MainSearchViewModel {
     let service: RandomUserService
+    let realmManager: RealmManager
     
     var isFetching = false
     var onUpdatedData: (() -> Void)?
     var onThrowError: ((Error) -> Void)?
-    var randomUsers: [RandomUser] = [] {
+    var userInfo: [UserInfo] = [] {
         didSet {
             onUpdatedData?()
         }
     }
     
-    init(service: RandomUserService = RandomUserServiceConcrete()) {
+    init(service: RandomUserService = RandomUserServiceConcrete(),
+         realmManager: RealmManager = try! RealmManager()) {
         self.service = service
+        self.realmManager = realmManager
     }
     
     func fetchRandomUsers(size: Int = 20) {
@@ -35,14 +38,30 @@ final class MainSearchViewModel {
             
             switch response {
             case .success(let response):
-                self?.randomUsers += response.results
+                let userInfo = response.results.compactMap { UserInfo($0) }.filter { $0 == $0 }
+                self?.userInfo += userInfo
+                self?.saveUsers(userInfo)
             case .failure(let error):
                 self?.onThrowError?(error)
             }
         }
     }
     
-    func randomUser(at index: IndexPath) -> RandomUser? {
-        return randomUsers[index.row]
+    func persistedUsers() -> [UserInfo] {
+        let fetchedUsers = realmManager.resultsFromRealm()
+        let users: [UserInfo] = fetchedUsers.compactMap { UserInfo($0) }
+        return users
+    }
+    
+    func saveUsers(_ users: [UserInfo]) {
+        let persistedUsers: [UserInfoPersisted] = users.compactMap { UserInfoPersisted($0) }
+        DispatchQueue.main.async { [weak self] in
+            self?.realmManager.addObjects(persistedUsers)
+        }
+    }
+    
+    func deleteUser(user: UserInfo) {
+        let persitedUser = UserInfoPersisted(user)
+        realmManager.deleteObject(persitedUser)
     }
 }

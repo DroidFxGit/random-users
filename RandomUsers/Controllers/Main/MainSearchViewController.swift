@@ -21,14 +21,30 @@ final class MainSearchViewController: UIViewController {
         title = "Random Users"
         UIAlertControllerView.showLoading(from: self, message: "Loading info...")
         setupSearchController()
-        fetchUsers()
+        handleBlocks()
+        
+        let persisted = viewModel.persistedUsers()
+        if persisted.isEmpty {
+            fetchUsers()
+        } else {
+            viewModel.userInfo = persisted
+        }
     }
     
     func fetchUsers() {
+        if !isSearching {
+            viewModel.fetchRandomUsers()
+        }
+    }
+    
+    fileprivate func configureBarButtonItem() {
+    }
+    
+    fileprivate func handleBlocks() {
         viewModel.onUpdatedData = {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.handleAdaptor(with: strongSelf.viewModel.randomUsers)
+                strongSelf.handleAdaptor(with: strongSelf.viewModel.userInfo)
             }
         }
         
@@ -38,16 +54,11 @@ final class MainSearchViewController: UIViewController {
                 strongSelf.handleError(error)
             }
         }
-        
-        if !isSearching {
-            viewModel.fetchRandomUsers()
-        }
     }
     
-    fileprivate func handleAdaptor(with users: [RandomUser]) {
+    fileprivate func handleAdaptor(with users: [UserInfo]) {
         UIAlertControllerView.hideLoading(from: self)
-        let userInfo = users.compactMap { UserInfo($0) }.filter { $0 == $0 }
-        adaptor = MainSearchAdaptor(tableView: tableView, data: userInfo, { [weak self] in
+        adaptor = MainSearchAdaptor(tableView: tableView, data: users, { [weak self] in
             self?.fetchUsers()
         }, { [weak self] user in
             self?.showUserDetails(with: user)
@@ -85,16 +96,16 @@ final class MainSearchViewController: UIViewController {
 extension MainSearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         isSearching = !searchText.isEmpty
-        let users = viewModel.randomUsers
+        let users = viewModel.userInfo
         let filteredUsers = searchText.isEmpty ? users : users.filter({ user -> Bool in
             return user.email.range(of: searchText, options: .caseInsensitive) != nil ||
-                   user.name.first.range(of: searchText, options: .caseInsensitive) != nil ||
-                   user.name.last.range(of: searchText, options: .caseInsensitive) != nil
+                   user.fullName.range(of: searchText, options: .caseInsensitive) != nil
         })
         handleAdaptor(with: filteredUsers)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        handleAdaptor(with: viewModel.randomUsers)
+        isSearching = false
+        handleAdaptor(with: viewModel.userInfo)
     }
 }

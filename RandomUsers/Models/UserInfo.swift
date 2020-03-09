@@ -33,4 +33,15 @@ struct UserInfo: Equatable, Hashable {
         let date = user.registered.date
         self.registeredDate = "Registered Date: \(date.stringDate)"
     }
+    
+    init(_ userPersisted: UserInfoPersisted) {
+        self.gender = userPersisted.gender
+        self.fullName = userPersisted.fullName
+        self.email = userPersisted.email
+        self.phone = userPersisted.phone
+        self.imageUrl = userPersisted.imageUrl
+        self.profileImageUrl = userPersisted.profileImageUrl
+        self.fullAddress = userPersisted.fullAddress
+        self.registeredDate = userPersisted.registeredDate
+    }
 }

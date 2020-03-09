@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,8 @@
 		52CAC8282410AC5200C0F067 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC8272410AC5200C0F067 /* Calendar+Extensions.swift */; };
 		52CAC82A2410ACB000C0F067 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC8292410ACB000C0F067 /* DateFormatter+Extensions.swift */; };
 		52CAC82C2410AF0900C0F067 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC82B2410AF0900C0F067 /* Date+Extensions.swift */; };
+		52CAC82F2414CE6900C0F067 /* UserInfoPersisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC82E2414CE6900C0F067 /* UserInfoPersisted.swift */; };
+		52CAC83524154ECA00C0F067 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAC83424154ECA00C0F067 /* RealmManager.swift */; };
 		54251A4C1FBEC109907ECE63 /* Pods_RandomUsers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD29CC97F8D1C64FCCDCF48 /* Pods_RandomUsers.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,8 @@
 		52CAC8272410AC5200C0F067 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		52CAC8292410ACB000C0F067 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		52CAC82B2410AF0900C0F067 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		52CAC82E2414CE6900C0F067 /* UserInfoPersisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPersisted.swift; sourceTree = "<group>"; };
+		52CAC83424154ECA00C0F067 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		61F404B9B38B68FA86F7A0FE /* Pods-RandomUsers-RandomUsersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUsers-RandomUsersUITests.debug.xcconfig"; path = "Target Support Files/Pods-RandomUsers-RandomUsersUITests/Pods-RandomUsers-RandomUsersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDD29CC97F8D1C64FCCDCF48 /* Pods_RandomUsers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomUsers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F3A95B5A94FCD32141FB0 /* Pods-RandomUsers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomUsers.debug.xcconfig"; path = "Target Support Files/Pods-RandomUsers/Pods-RandomUsers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,12 +161,12 @@
 				52BBFA4424074FD7002DC0B1 /* SceneDelegate.swift */,
 				52BBFA4B24074FD9002DC0B1 /* Assets.xcassets */,
 				52BBFA4D24074FD9002DC0B1 /* LaunchScreen.storyboard */,
+				52CAC83024154E7A00C0F067 /* Core */,
 				52CAC80E240CA0C500C0F067 /* Views */,
 				52CAC80B240C8C9E00C0F067 /* Utils */,
 				52BBFA772407589D002DC0B1 /* Adaptors */,
 				52BBFA7224075069002DC0B1 /* Controllers */,
 				52CAC7FC240C165A00C0F067 /* Models */,
-				52BBFA7A24075F9E002DC0B1 /* Networking */,
 				52CAC808240C83CE00C0F067 /* ViewModel */,
 			);
 			path = RandomUsers;
@@ -218,6 +222,7 @@
 			children = (
 				52CAC7FD240C168200C0F067 /* RandomUserResponse.swift */,
 				52CAC817240CD57200C0F067 /* UserInfo.swift */,
+				52CAC82E2414CE6900C0F067 /* UserInfoPersisted.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +316,23 @@
 			path = custom;
 			sourceTree = "<group>";
 		};
+		52CAC83024154E7A00C0F067 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC83324154EB200C0F067 /* Persistance */,
+				52BBFA7A24075F9E002DC0B1 /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		52CAC83324154EB200C0F067 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				52CAC83424154ECA00C0F067 /* RealmManager.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
 		E211958480B8BED847AAE511 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,7 +353,6 @@
 				0C65B648828F1C53E5977577 /* Pods-RandomUsersTests.debug.xcconfig */,
 				3C0C2248CAA094A8E0349894 /* Pods-RandomUsersTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -583,6 +604,7 @@
 				52CAC813240CA10800C0F067 /* UserTableViewCell.swift in Sources */,
 				52BBFA79240759ED002DC0B1 /* MainSearchAdaptor.swift in Sources */,
 				52BBFA4324074FD7002DC0B1 /* AppDelegate.swift in Sources */,
+				52CAC82F2414CE6900C0F067 /* UserInfoPersisted.swift in Sources */,
 				52CAC807240C7A9F00C0F067 /* RandomUserService.swift in Sources */,
 				52CAC816240CA90D00C0F067 /* UIImageView+Extensions.swift in Sources */,
 				52CAC800240C73E700C0F067 /* BaseService.swift in Sources */,
@@ -593,6 +615,7 @@
 				52CAC823240F503100C0F067 /* UserDetailViewController.swift in Sources */,
 				52CAC7FE240C168200C0F067 /* RandomUserResponse.swift in Sources */,
 				52CAC80A240C842900C0F067 /* MainSearchViewModel.swift in Sources */,
+				52CAC83524154ECA00C0F067 /* RealmManager.swift in Sources */,
 				52BBFA75240750B9002DC0B1 /* MainSearchViewController.swift in Sources */,
 				52CAC82A2410ACB000C0F067 /* DateFormatter+Extensions.swift in Sources */,
 			);
