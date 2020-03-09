@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 final class MainSearchAdaptor: NSObject, UITableViewDelegate, UITableViewDataSource {
+    private var data: [UserInfo]!
     private let tableView: UITableView!
-    private let data: [UserInfo]!
     private let kHeightRow: CGFloat = 100.0
     private let kHeightFooter: CGFloat = 40.0
     
     var onSelectItem: ((_ user: UserInfo) -> Void)?
-    var onDeleteItem: ((_ user: UserInfo) -> Void)?
+    var onDeleteItem: ((_ user: UserInfo, _ index: IndexPath) -> Void)?
     var onBeginDragging: (() -> Void)?
     var onFetchUsers: (() -> Void)?
     
@@ -30,11 +30,13 @@ final class MainSearchAdaptor: NSObject, UITableViewDelegate, UITableViewDataSou
     init(tableView: UITableView,
          data: [UserInfo],
          _ onFetchUsers: (() -> Void)? = nil,
-         _ onSelectItem: ((_ index: UserInfo) -> Void)? = nil) {
+         _ onSelectItem: ((_ user: UserInfo) -> Void)? = nil,
+         _ onDeleteItem: ((_ user: UserInfo, _ index: IndexPath) -> Void)? = nil) {
         self.tableView = tableView
         self.data = data
         self.onFetchUsers = onFetchUsers
         self.onSelectItem = onSelectItem
+        self.onDeleteItem = onDeleteItem
         
         super.init()
         setupAdaptor()
@@ -80,6 +82,19 @@ final class MainSearchAdaptor: NSObject, UITableViewDelegate, UITableViewDataSou
                 tableView.tableFooterView?.isHidden = true
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let user = data[indexPath.row]
+            data.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            onDeleteItem?(user, indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

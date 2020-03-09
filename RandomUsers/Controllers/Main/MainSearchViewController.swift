@@ -60,9 +60,11 @@ final class MainSearchViewController: UIViewController {
         UIAlertControllerView.hideLoading(from: self)
         adaptor = MainSearchAdaptor(tableView: tableView, data: users, { [weak self] in
             self?.fetchUsers()
-        }, { [weak self] user in
-            self?.showUserDetails(with: user)
-        })
+            }, { [weak self] user in
+                self?.showUserDetails(with: user)
+            }, { [weak self] (user, index) in
+                self?.viewModel.deleteUser(user: user, index: index)
+            })
         
         adaptor.onBeginDragging = {
             self.searchController.searchBar.endEditing(true)

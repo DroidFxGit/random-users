@@ -24,6 +24,10 @@ final class RealmManager {
         return realm.objects(UserInfoPersisted.self)
     }
     
+    func resultObject(with key: String) -> UserInfoPersisted? {
+        return realm.object(ofType: UserInfoPersisted.self, forPrimaryKey: key)
+    }
+    
     func addObjects(_ objects: [UserInfoPersisted]) {
         try! realm.write {
             realm.add(objects, update: .all)

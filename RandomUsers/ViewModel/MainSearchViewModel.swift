@@ -60,8 +60,9 @@ final class MainSearchViewModel {
         }
     }
     
-    func deleteUser(user: UserInfo) {
-        let persitedUser = UserInfoPersisted(user)
-        realmManager.deleteObject(persitedUser)
+    func deleteUser(user: UserInfo, index: IndexPath) {
+        guard let persistedUser = realmManager.resultObject(with: user.email) else { return }
+        realmManager.deleteObject(persistedUser)
+        userInfo.remove(at: index.row)
     }
 }
