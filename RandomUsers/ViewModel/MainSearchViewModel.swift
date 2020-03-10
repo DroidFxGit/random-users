@@ -38,9 +38,9 @@ final class MainSearchViewModel {
             
             switch response {
             case .success(let response):
-                let userInfo = response.results.compactMap { UserInfo($0) }.filter { $0 == $0 }
-                self?.userInfo += userInfo
-                self?.saveUsers(userInfo)
+                let users = response.results.compactMap { UserInfo($0) }.removingDuplicates()
+                self?.userInfo += users
+                self?.saveUsers(users)
             case .failure(let error):
                 self?.onThrowError?(error)
             }

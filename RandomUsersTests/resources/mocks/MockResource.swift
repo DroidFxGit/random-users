@@ -10,4 +10,5 @@ import Foundation
 
 enum MockResource: String {
     case validResponse
+    case duplicatedUsers
 }

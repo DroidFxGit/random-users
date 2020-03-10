@@ -24,6 +24,7 @@ extension ProcessInfo {
 class MockManager {
     let bundle: Bundle
     lazy var requestValidUsersJSON: Data = self.dataForFile(named: .validResponse)
+    lazy var requestDuplicatedUsersJSON: Data = self.dataForFile(named: .duplicatedUsers)
     
     init(bundleName: String, mainBundle: Bundle = .main) {
         if let url = mainBundle.url(forResource: bundleName, withExtension: "bundle"),
